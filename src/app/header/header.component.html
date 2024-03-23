@@ -1,0 +1,30 @@
+<header class="header">
+  <div class="content">
+    <div class="header-name">
+      <a href="/" class="name">ELCHANAN</a>
+    </div>
+    <div class="buttons">
+      <Button class="about btn">About</Button>
+      <Button class="Resume btn">Resume</Button>
+      <Button class="contact btn">Contact</Button>
+    </div>
+    <div id="hamMenu" class="ham-menu" (click)="displayMenu=!displayMenu">&equiv;</div>
+  </div>
+  <ul id="menubody" class="menu-body" *ngIf="displayMenu">
+    <li class="list-item">
+      <Button class="about btn">
+        <span> About </span>
+      </Button>
+    </li>
+    <li>
+      <Button class="resume btn">
+        <span> Resume </span>
+      </Button>
+    </li>
+    <li>
+      <Button class="contact btn">
+        <span> Contact </span>
+      </Button>
+    </li>
+  </ul>
+</header>
