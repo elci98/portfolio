@@ -4,7 +4,8 @@
 }
 
 $textColor:black;
-$primaryColor:#84a98c;
+$btnTextColor:white;
+$primaryColor:#2bd9fe;
 
 html, body{
     font-size: 12px;
@@ -14,6 +15,22 @@ html, body{
     width: 100%;
     margin: 0;
     user-select: none;
+    .btn{
+        padding: 0;
+        border: none;
+        outline: none;
+        font-family: inherit;
+        font-size: 1.3rem;
+        font-weight: 600;
+        cursor: pointer;
+        background-color: $primaryColor;
+    }
+    app-root{
+        visibility: hidden;
+        &.loaded{
+            visibility: visible;
+        }
+    }
     .app-loading{
             height: 100%;
             background-color: white;
@@ -67,23 +84,19 @@ html, body{
             }
         }
     }
-    .background-img{
+    .root.background-img{
         height: 100%;
-        // width: 100%;
+        width: 102%;
         background-position: center;
         background-size: cover;
         background-image: url('./assets/imgs/background.jpg');
-    }
-    .root{
-        height: 100%;
-        width: 100%;
-        position: fixed;
-        top: 0;
-        align-content: center;
+        display: table;
         .welcome{
             font-size: 4rem;
             text-align: center;
             width: 100%;
+            vertical-align: middle;
+            display: table-cell;
             .scrolldown-container{
                 display: flex;
                 flex-direction: column;
@@ -94,29 +107,23 @@ html, body{
                     border: 0.3rem solid black;
                     border-radius: 2rem;
                     text-align: -webkit-center;
+                    position: relative;
                     .dot{
                         height: 1rem;
                         width: 1rem;
                         border-radius: 1rem;
                         background-color: black;
                         animation: MoveUpDown 2s linear infinite;
-                        position: fixed;
+                        position: absolute;
                         margin: 0.5rem;
                     }
                 }
             }
         }
         .btn{
-            padding: 0;
             background: transparent;
             height: 3rem;
             width: 6rem;
-            border: none;
-            outline: none;
-            font-family: inherit;
-            font-size: 1.3rem;
-            font-weight: 600;
-            cursor: pointer;
         }
 
         .header{
@@ -185,6 +192,41 @@ html, body{
     
         }
     }
+    .intro-container{
+        height: 50rem;
+        width: 100%;
+        display: flex;
+        column-gap: 5rem;
+        justify-content: center;
+        margin-top: 7rem;
+        .my-pic{
+            height: 40rem;
+            width: 25rem;
+            background-image: url("assets/imgs/minion.jpg");
+        }
+        .left-side{
+            font-size: 2rem;
+            width: 31rem;
+            .name{
+                font-size: 4rem;
+                font-weight: bold;
+            }
+            .title{
+                font-size: 3rem;
+                font-weight: 500;
+            }
+            .intro .btn{
+                height: 3rem;
+                display: block;
+                width: 10rem;
+                border-radius: 0.5rem;
+                text-align: center;
+                align-content: center;
+                color: $btnTextColor;
+                text-decoration: auto;
+            }
+        }
+    }
 }
 
 
@@ -207,19 +249,19 @@ html, body{
 }
 @keyframes MoveUpDown {
     0%{
-        top: 50%;
+        top: 0%;
         opacity: 1;
     } 
     15%{
         opacity: 1;
-        top: 54%;
+        top: 38%;
     }
     50%{
         opacity: 0;
-        top: 54%;
+        top: 38%;
     }
     100%{
         opacity: 0;
-        top: 50%;
+        top: 0%;
     }
   }

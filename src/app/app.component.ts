@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
 import { ScrolldownComponent } from './scrolldown/scrolldown.component';
+import { IntroComponent } from './intro/intro.component';
 
 @Component({
     selector: 'app-root',
@@ -11,7 +12,9 @@ import { ScrolldownComponent } from './scrolldown/scrolldown.component';
     imports: [
       RouterOutlet, 
       HeaderComponent, 
-      ScrolldownComponent]
+      ScrolldownComponent,
+      IntroComponent
+  ]
 
 })
 export class AppComponent {
