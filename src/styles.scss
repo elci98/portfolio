@@ -3,265 +3,412 @@
     src: url('assets\\fonts\\Assistant.ttf') format('truetype');
 }
 
-$textColor:black;
-$btnTextColor:white;
-$primaryColor:#2bd9fe;
+$textColor: black;
+$btnTextColor: white;
+$primaryColor: #2bd9fe;
 
-html, body{
-    font-size: 12px;
+html,
+body {
+    --edgeposition: -135%;
+    font-size: 93.75%;
     font-family: "Assistant";
     overflow-x: hidden;
     height: 100%;
     width: 100%;
     margin: 0;
     user-select: none;
-    .btn{
-        padding: 0;
-        border: none;
-        outline: none;
-        font-family: inherit;
-        font-size: 1.3rem;
-        font-weight: 600;
-        cursor: pointer;
-        background-color: $primaryColor;
+}
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.btn {
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: $primaryColor;
+}
+
+ul {
+    list-style-type: none;
+}
+
+app-root {
+    visibility: hidden;
+    text-align: -webkit-center;
+
+    &.loaded {
+        visibility: visible;
     }
-    app-root{
-        visibility: hidden;
-        &.loaded{
-            visibility: visible;
-        }
+}
+
+.app-loading {
+    height: 100%;
+    background-color: white;
+    align-content: center;
+    text-align: -webkit-center;
+    position: relative;
+    z-index: 1000;
+
+    .loader {
+        width: 65px;
+        aspect-ratio: 1;
+        position: relative;
     }
-    .app-loading{
-            height: 100%;
-            background-color: white;
-            align-content: center;
-            text-align: -webkit-center;
-            position: relative;
-            z-index: 1000;
-        .loader {
-            width: 65px;
-            aspect-ratio: 1;
-            position: relative;
-        }
-        .loader:before,
-        .loader:after {
-            content: "";
-            position: absolute;
-            border-radius: 50px;
-            box-shadow: 0 0 0 3px inset $primaryColor;
-            animation: l4 2.5s infinite;
-        }
-        .loader:after {
-            animation-delay: -1.25s;
-        }
-        @keyframes l4 {
-            0% {
+
+    .loader:before,
+    .loader:after {
+        content: "";
+        position: absolute;
+        border-radius: 50px;
+        box-shadow: 0 0 0 3px inset $primaryColor;
+        animation: l4 2.5s infinite;
+    }
+
+    .loader:after {
+        animation-delay: -1.25s;
+    }
+
+    @keyframes l4 {
+        0% {
             inset: 0 35px 35px 0;
-            }
-            12.5% {
-            inset: 0 35px 0 0;
-            }
-            25% {
-            inset: 35px 35px 0 0;
-            }
-            37.5% {
-            inset: 35px 0 0 0;
-            }
-            50% {
-            inset: 35px 0 0 35px;
-            }
-            62.5% {
-            inset: 0 0 0 35px;
-            }
-            75% {
-            inset: 0 0 35px 35px;
-            }
-            87.5% {
-            inset: 0 0 35px 0;
-            }
-            100% {
-            inset: 0 35px 35px 0;
-            }
-        }
-    }
-    .root.background-img{
-        height: 100%;
-        width: 102%;
-        background-position: center;
-        background-size: cover;
-        background-image: url('./assets/imgs/background.jpg');
-        display: table;
-        .welcome{
-            font-size: 4rem;
-            text-align: center;
-            width: 100%;
-            vertical-align: middle;
-            display: table-cell;
-            .scrolldown-container{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                .border{
-                    height: 4.166667rem;
-                    width: 2rem;
-                    border: 0.3rem solid black;
-                    border-radius: 2rem;
-                    text-align: -webkit-center;
-                    position: relative;
-                    .dot{
-                        height: 1rem;
-                        width: 1rem;
-                        border-radius: 1rem;
-                        background-color: black;
-                        animation: MoveUpDown 2s linear infinite;
-                        position: absolute;
-                        margin: 0.5rem;
-                    }
-                }
-            }
-        }
-        .btn{
-            background: transparent;
-            height: 3rem;
-            width: 6rem;
         }
 
-        .header{
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: 5rem;
-            z-index: 1;
-            .content{
-                display: flex;
-                align-items: center;
-                width: calc(100% - 5rem);
-                justify-content: space-between;   
-                .ham-menu{
-                    font-size: 4rem;
-                    font-weight: bolder;
-                    display: none; 
-                    cursor: pointer; 
-                }
-                .header-name{
-                    font-size: 3rem;
-                    margin: 0.5rem 0 0 1rem;
-                    font-weight: bold;
-                    .name{
-                        color: $textColor;
-                        text-decoration: auto;
-                    }
-                }
-            }
-            .menu-body{
-                box-shadow: rgba(0,0,0,0.35) 0.2rem 0.2rem 0.2rem 0.2rem;
-                background: white;
-                border-radius: 1rem;
-                height: fit-content;
-                width: 10rem;
-                margin: 0;
-                padding: 0  ;
-                margin-right: 2rem;
-                float: right;
-                list-style-type: none;
-                li button {
-                    display: flex;
-                    padding: 0.5rem;
-                    span{
-                        margin-left:1rem;
-                    }
-                    &:before{
-                        font-weight: 300;
-                        font-family: "Material Icons";
-                        display: block;
-                        padding: 0.2rem;
-                    }
-                }
-                .about:before{
-                    content: "\e88e";
-                }
-                .resume:before{
-                    content: "\e853";
-                }
-                .contact:before{
-                    content: "\e0cf";
-                }
-            } 
-    
+        12.5% {
+            inset: 0 35px 0 0;
         }
-    }
-    .intro-container{
-        height: 50rem;
-        width: 100%;
-        display: flex;
-        column-gap: 5rem;
-        justify-content: center;
-        margin-top: 7rem;
-        .my-pic{
-            height: 40rem;
-            width: 25rem;
-            background-image: url("assets/imgs/minion.jpg");
+
+        25% {
+            inset: 35px 35px 0 0;
         }
-        .left-side{
-            font-size: 2rem;
-            width: 31rem;
-            .name{
-                font-size: 4rem;
-                font-weight: bold;
-            }
-            .title{
-                font-size: 3rem;
-                font-weight: 500;
-            }
-            .intro .btn{
-                height: 3rem;
-                display: block;
-                width: 10rem;
-                border-radius: 0.5rem;
-                text-align: center;
-                align-content: center;
-                color: $btnTextColor;
-                text-decoration: auto;
-            }
+
+        37.5% {
+            inset: 35px 0 0 0;
+        }
+
+        50% {
+            inset: 35px 0 0 35px;
+        }
+
+        62.5% {
+            inset: 0 0 0 35px;
+        }
+
+        75% {
+            inset: 0 0 35px 35px;
+        }
+
+        87.5% {
+            inset: 0 0 35px 0;
+        }
+
+        100% {
+            inset: 0 35px 35px 0;
         }
     }
 }
+
+.root.background-img {
+    height: 100%;
+    width: 102%;
+    background-position: center;
+    background-size: cover;
+    background-image: url('./assets/imgs/background.jpg');
+    display: table;
+    min-height: 400px;
+
+    .welcome {
+        font-size: 4rem;
+        text-align: center;
+        width: 100%;
+        vertical-align: middle;
+        display: table-cell;
+
+        .scrolldown-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .border {
+                height: 4.166667rem;
+                width: 2rem;
+                border: 0.3rem solid black;
+                border-radius: 2rem;
+                text-align: -webkit-center;
+                position: relative;
+
+                .dot {
+                    height: 1rem;
+                    width: 1rem;
+                    border-radius: 1rem;
+                    background-color: black;
+                    animation: MoveUpDown 2s linear infinite;
+                    position: absolute;
+                    margin: 0.5rem;
+                }
+            }
+        }
+    }
+
+    .btn {
+        background: transparent;
+        height: 3rem;
+        width: 6rem;
+    }
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 5rem;
+        z-index: 1;
+        background-color: white;
+
+        .content {
+            display: flex;
+            align-items: center;
+            width: calc(100% - 5rem);
+            justify-content: space-between;
+
+            .ham-menu {
+                font-size: 4rem;
+                font-weight: bolder;
+                display: none;
+                cursor: pointer;
+            }
+
+            .header-name {
+                font-size: 3rem;
+                margin: 0.5rem 0 0 1rem;
+                font-weight: bold;
+
+                .name {
+                    color: $textColor;
+                    text-decoration: auto;
+                }
+            }
+        }
+
+        .menu-body {
+            box-shadow: rgba(0, 0, 0, 0.35) 0.2rem 0.2rem 0.2rem 0.2rem;
+            background: white;
+            border-radius: 1rem;
+            height: fit-content;
+            width: 10rem;
+            margin: 0;
+            padding: 0;
+            margin-right: 2rem;
+            float: right;
+
+            li button {
+                display: flex;
+                padding: 0.5rem;
+
+                span {
+                    margin-left: 1rem;
+                }
+
+                &:before {
+                    font-weight: 300;
+                    font-family: "Material Icons";
+                    display: block;
+                    padding: 0.2rem;
+                }
+            }
+
+            .about:before {
+                content: "\e88e";
+            }
+
+            .resume:before {
+                content: "\e853";
+            }
+
+            .contact:before {
+                content: "\e0cf";
+            }
+        }
+
+    }
+}
+
+.intro-container {
+    width: 100%;
+    margin: 7rem 0 0 1rem;
+
+    .my-pic {
+        height: 40rem;
+        width: 25rem;
+        background: url("assets/imgs/minion.jpg") no-repeat;
+        float: right;
+    }
+
+    .left-side {
+        font-size: 2rem;
+        width: 55%;
+        float: left;
+
+        .name {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: 500;
+        }
+
+        .intro .btn {
+            height: 3rem;
+            display: block;
+            width: 10rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            align-content: center;
+            color: $btnTextColor;
+            text-decoration: auto;
+        }
+        aside{
+            margin-top: 1em;
+        }
+    }
+}
+
+.skills.container {
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+    text-align: -webkit-center;
+
+    .skills-list-wrapper {
+        height: 40rem;
+        // border: 1px solid black;
+        // box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+        // border-radius: 1rem;
+        align-content: center;
+        overflow: hidden;
+        padding: 1rem;
+        min-width: 30rem;            
+
+        border: 3px solid gray;
+        .skills-list {
+            position: relative;
+            display: flex;
+            column-count: 1;
+            padding: 0;
+            column-gap: 1rem;
+            animation: slide 20s linear infinite alternate;
+            app-skill-item .skill-item-container {
+                height: 25rem;
+                // width: 30rem;
+                border-radius: 1rem;
+                background-color: rgb(117, 235, 251);
+                box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+
+                .skill-name {
+                    font-size: 3.5rem;
+                    font-weight: 600;
+                    margin: 4rem 0 3rem 0;
+                }
+
+                .skill-text {
+                    font-size: 1.4rem;
+                    font-weight: 400;
+                    width: 80%;
+                }
+            }
+        }
+
+    }
+}
+
 
 
 @media (max-width: 700px) {
     .buttons {
         display: none;
     }
-    #hamMenu{
+
+    #hamMenu {
         display: block;
         color: $textColor;
     }
-    #scrolldown{
+
+    #scrolldown {
         display: none;
     }
 }
+
+@media(max-width: 1500px){
+   body{
+    --edgeposition:-254%;
+   }
+}
+
+@media(max-width: 1000px){
+    body{
+     --edgeposition:-620%;
+    }
+}
+
 @media (min-width: 700px) {
-    #menubody{
+    #menubody {
         display: none;
     }
 }
+@media only screen and (max-width: 450px) {
+    html,body {
+        font-size: 62.5%;
+    }
+}
+
 @keyframes MoveUpDown {
-    0%{
+    0% {
         top: 0%;
         opacity: 1;
-    } 
-    15%{
+    }
+
+    15% {
         opacity: 1;
         top: 38%;
     }
-    50%{
+
+    50% {
         opacity: 0;
         top: 38%;
     }
-    100%{
+
+    100% {
         opacity: 0;
         top: 0%;
     }
-  }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0%);
+    }
+
+    45% {
+        transform: translateX(var(--edgeposition));
+    }
+
+    50% {
+        transform: translateX(var(--edgeposition));
+    }
+
+    95% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}

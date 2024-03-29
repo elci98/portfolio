@@ -1,0 +1,11 @@
+    <div class="skills container"><!-- container  -->
+      <div class="skills-list-wrapper" #skillsListWrraper><!-- slider-wrapper  -->
+        <div class="skills-list" ><!-- wrapper=holder  -->
+            <app-skill-item #skillsListItem *ngFor="let skill of skillsList"
+              [name]="skill.name"
+              [text]="skill.text"
+              [width]="elementWidthFactor">
+            </app-skill-item>
+        </div>
+    </div>
+</div>
