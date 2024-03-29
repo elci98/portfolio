@@ -1,7 +1,7 @@
 import {
 	Component,
-  	effect,
-  	input,
+	effect,
+	input,
 } from '@angular/core';
 import { SvgLoaderService } from '../svg-loader.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -18,12 +18,12 @@ export class SvgComponent {
 
 	iconsvg?: SafeHtml;
 
-  	constructor(
+	constructor(
     private svgloader: SvgLoaderService,
     private _sanitizer: DomSanitizer
-  	) {
-    	effect(() => {
-      	this.iconsvg = this.svgloader.svgs[this.iconname()];
-    	});
-  	}
+	) {
+		effect(() => {
+			this.iconsvg = this.svgloader.svgs[this.iconname()];
+		});
+	}
 }

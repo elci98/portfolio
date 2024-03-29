@@ -1,12 +1,12 @@
-<header class="header">
-  <div class="content">
+<header [@changeBackground]="whiteBackground ? 'white' : 'transparent'" class="header">
+  <div  class="content">
     <div class="header-name">
       <a href="/" class="name">ELCHANAN</a>
     </div>
     <div class="buttons">
-      <Button class="about btn">About</Button>
-      <Button class="Resume btn">Resume</Button>
-      <Button class="contact btn">Contact</Button>
+      <Button class="about btn" [ngClass]="{'white-background': whiteBackground}">About</Button>
+      <Button class="Resume btn" [ngClass]="{'white-background': whiteBackground}">Resume</Button>
+      <Button class="contact btn" [ngClass]="{'white-background': whiteBackground}">Contact</Button>
     </div>
     <div id="hamMenu" class="ham-menu" (click)="displayMenu=!displayMenu">&equiv;</div>
   </div>

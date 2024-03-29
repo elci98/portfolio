@@ -169,7 +169,6 @@ app-root {
         width: 100%;
         height: 5rem;
         z-index: 1;
-        background-color: white;
 
         .content {
             display: flex;
@@ -192,7 +191,13 @@ app-root {
                 .name {
                     color: $textColor;
                     text-decoration: auto;
+                    &.whitebackground{
+                        color: $primaryColor;
+                    }
                 }
+            }
+            .buttons .btn.white-background{
+                color: $primaryColor;
             }
         }
 
@@ -210,11 +215,10 @@ app-root {
             li button {
                 display: flex;
                 padding: 0.5rem;
-
+                float: left;
                 span {
                     margin-left: 1rem;
                 }
-
                 &:before {
                     font-weight: 300;
                     font-family: "Material Icons";
@@ -239,10 +243,7 @@ app-root {
     }
 }
 
-.intro-container {
-    width: 100%;
-    margin: 7rem 0 0 1rem;
-
+.intro {
     .my-pic {
         height: 40rem;
         width: 25rem;
@@ -250,54 +251,65 @@ app-root {
         float: right;
     }
 
-    .left-side {
-        font-size: 2rem;
-        width: 55%;
-        float: left;
-
-        .name {
-            font-size: 4rem;
-            font-weight: bold;
-        }
-
-        .title {
-            font-size: 3rem;
-            font-weight: 500;
-        }
-
-        .intro .btn {
-            height: 3rem;
-            display: block;
-            width: 10rem;
-            border-radius: 0.5rem;
-            text-align: center;
-            align-content: center;
-            color: $btnTextColor;
-            text-decoration: auto;
-        }
-        aside{
-            margin-top: 1em;
+    .container{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;        
+        padding: 5rem;
+        .left-side {
+            font-size: 2rem;
+            text-align: end;            
+            .name {
+                font-size: 4rem;
+                font-weight: bold;
+            }
+    
+            .title {
+                font-size: 3rem;
+                font-weight: 500;
+            }
+    
+            // .intro .btn {
+            //     height: 3rem;
+            //     display: block;
+            //     width: 10rem;
+            //     border-radius: 0.5rem;
+            //     text-align: center;
+            //     align-content: center;
+            //     color: $btnTextColor;
+            //     text-decoration: auto;
+            // }
         }
     }
 }
 
-.skills.container {
-    width: 90%;
-    margin: auto;
-    overflow: hidden;
+.skills {
     text-align: -webkit-center;
-
+    background-color: rgba(23,78,45,0.1);
+    .line-1{
+        height: 1px;
+        width: 10rem;
+        margin: 2rem 0 0 0;
+        background: $primaryColor;
+    }
+    .line-2{
+        height: 1px;
+        width: 10rem;
+        margin: 0;
+        background: $primaryColor;
+    }
+    h2{
+        font-weight: 700;
+        font-size: 3rem;
+        margin: 0;
+    }
     .skills-list-wrapper {
-        height: 40rem;
-        // border: 1px solid black;
-        // box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
-        // border-radius: 1rem;
+        height: 37rem;
         align-content: center;
         overflow: hidden;
         padding: 1rem;
         min-width: 30rem;            
 
-        border: 3px solid gray;
         .skills-list {
             position: relative;
             display: flex;
@@ -307,11 +319,9 @@ app-root {
             animation: slide 20s linear infinite alternate;
             app-skill-item .skill-item-container {
                 height: 25rem;
-                // width: 30rem;
                 border-radius: 1rem;
-                background-color: rgb(117, 235, 251);
-                box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
-
+                // background-color: rgba(117, 235, 251, 0.1);
+                // box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);                
                 .skill-name {
                     font-size: 3.5rem;
                     font-weight: 600;
@@ -329,7 +339,16 @@ app-root {
     }
 }
 
-
+footer{
+    background: rgba(23, 78, 45, 0.1);
+    padding: 1.5rem;
+    margin-top: 6.5rem;
+    .icons{
+        display: flex;
+        column-gap: 0.5rem;
+        justify-content: center;
+    }
+}
 
 @media (max-width: 700px) {
     .buttons {
