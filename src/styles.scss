@@ -3,14 +3,15 @@
     src: url('assets\\fonts\\Assistant.ttf') format('truetype');
 }
 
-$textColor: black;
+$textColor: rgba(0, 0, 0, 0.5);
 $btnTextColor: white;
-$primaryColor: #2bd9fe;
+$primaryColor: rgb(92, 211, 74);
+$backgroundColor: rgba(92, 211, 74, 0.23);
 
 html,
 body {
     --edgeposition: -135%;
-    font-size: 93.75%;
+    font-size: 15px;
     font-family: "Assistant";
     overflow-x: hidden;
     height: 100%;
@@ -116,9 +117,9 @@ app-root {
 .root.background-img {
     height: 100%;
     width: 102%;
-    background-position: center;
+    background-position: revert;
     background-size: cover;
-    background-image: url('./assets/imgs/background.jpg');
+    background-image: url('./assets/imgs/background2.jpg');
     display: table;
     min-height: 400px;
 
@@ -128,16 +129,19 @@ app-root {
         width: 100%;
         vertical-align: middle;
         display: table-cell;
-
+        .welcome-text{
+            color: $textColor;
+        }
         .scrolldown-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-top: 1rem;
 
             .border {
                 height: 4.166667rem;
                 width: 2rem;
-                border: 0.3rem solid black;
+                border: 0.3rem solid $textColor;
                 border-radius: 2rem;
                 text-align: -webkit-center;
                 position: relative;
@@ -146,7 +150,7 @@ app-root {
                     height: 1rem;
                     width: 1rem;
                     border-radius: 1rem;
-                    background-color: black;
+                    background-color: $textColor;
                     animation: MoveUpDown 2s linear infinite;
                     position: absolute;
                     margin: 0.5rem;
@@ -189,9 +193,9 @@ app-root {
                 font-weight: bold;
 
                 .name {
-                    color: $textColor;
+                    color: rgba(0, 0, 0, 0.5);
                     text-decoration: auto;
-                    &.whitebackground{
+                    &.white-background{
                         color: $primaryColor;
                     }
                 }
@@ -244,21 +248,16 @@ app-root {
 }
 
 .intro {
-    .my-pic {
-        height: 40rem;
-        width: 25rem;
-        background: url("assets/imgs/minion.jpg") no-repeat;
-        float: right;
-    }
 
     .container{
         display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;        
         padding: 5rem;
+        align-items: flex-end;
+        column-gap: 2rem;
+        flex-direction: row-reverse;        
         .left-side {
             font-size: 2rem;
-            text-align: end;            
+            text-align: start;            
             .name {
                 font-size: 4rem;
                 font-weight: bold;
@@ -269,23 +268,32 @@ app-root {
                 font-weight: 500;
             }
     
-            // .intro .btn {
-            //     height: 3rem;
-            //     display: block;
-            //     width: 10rem;
-            //     border-radius: 0.5rem;
-            //     text-align: center;
-            //     align-content: center;
-            //     color: $btnTextColor;
-            //     text-decoration: auto;
-            // }
+            .intro .btn {
+                height: 3rem;
+                display: flex;
+                width: 10rem;
+                font-size: 0.9rem;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                text-decoration: auto;
+                &:after{
+                    font-family: 'Material Icons';
+                    content: "\e2c4";
+                    padding: 0.5rem ;
+                }
+            }
+        }
+        aside, aside img{
+            width: 28.8rem;
+            height: 30.1333333rem;   
         }
     }
 }
 
 .skills {
     text-align: -webkit-center;
-    background-color: rgba(23,78,45,0.1);
+    background-color: $backgroundColor;
     .line-1{
         height: 1px;
         width: 10rem;
@@ -302,6 +310,7 @@ app-root {
         font-weight: 700;
         font-size: 3rem;
         margin: 0;
+        padding: 0.5rem 0 0.9rem 0;
     }
     .skills-list-wrapper {
         height: 37rem;
@@ -320,8 +329,6 @@ app-root {
             app-skill-item .skill-item-container {
                 height: 25rem;
                 border-radius: 1rem;
-                // background-color: rgba(117, 235, 251, 0.1);
-                // box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);                
                 .skill-name {
                     font-size: 3.5rem;
                     font-weight: 600;
@@ -340,13 +347,17 @@ app-root {
 }
 
 footer{
-    background: rgba(23, 78, 45, 0.1);
+    background: $backgroundColor;
     padding: 1.5rem;
     margin-top: 6.5rem;
     .icons{
         display: flex;
         column-gap: 0.5rem;
         justify-content: center;
+        margin-top: 0.5rem;
+    }
+    p{
+        margin-bottom: 0;
     }
 }
 
@@ -363,6 +374,20 @@ footer{
     #scrolldown {
         display: none;
     }
+
+    #intro-container{
+        display: block;
+        aside{
+            height: 100%;
+            width: 100%;
+            padding-top: 1rem;     
+            img{
+                height: inherit;
+                width: inherit;
+            }
+        }
+     }
+ 
 }
 
 @media(max-width: 1500px){
@@ -386,6 +411,10 @@ footer{
     html,body {
         font-size: 62.5%;
     }
+    #intro-container aside{
+        height: 100%;
+        width: 100%;
+    }
 }
 
 @keyframes MoveUpDown {
@@ -407,6 +436,12 @@ footer{
     100% {
         opacity: 0;
         top: 0%;
+    }
+}
+
+@keyframes fade-out{
+    to{
+        display: none;
     }
 }
 

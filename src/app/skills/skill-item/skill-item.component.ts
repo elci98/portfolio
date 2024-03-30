@@ -3,9 +3,9 @@ import { SvgComponent } from '../../svg/svg.component';
 import { NgStyle } from '@angular/common';
 
 @Component({
-  	selector: 'app-skill-item',
-  	standalone: true,
-  	imports: [SvgComponent, NgStyle],
+	selector: 'app-skill-item',
+	standalone: true,
+	imports: [SvgComponent, NgStyle],
 	templateUrl: './skill-item.component.html',
 	styleUrl: './skill-item.component.scss'
 })

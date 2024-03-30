@@ -50,8 +50,7 @@ export class HeaderComponent {
 		this.previousScrollPosition=document.body.scrollTop;
 	}
 
-	ngOnInit(): void {
-		//Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-		//Add 'implements OnInit' to the class.
+	onAboutClicked(){
+		document.getElementById('intro')!.scrollIntoView();
 	}
 }
