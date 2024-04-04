@@ -40,17 +40,22 @@ export class HeaderComponent {
 		
 	}
 
-	@HostListener('window:mousewheel', [])
+	@HostListener('window:scroll', [])
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	onScroll(){
-		if(document.body.scrollTop >= 400 && this.previousScrollPosition < 400 ||
-			document.body.scrollTop <= 400 && this.previousScrollPosition > 400){
+		const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+		if(scrollPosition >= 400 && this.previousScrollPosition < 400 ||
+			scrollPosition <= 400 && this.previousScrollPosition > 400){
 			this.whiteBackground = !this.whiteBackground;
 		}
-		this.previousScrollPosition=document.body.scrollTop;
+		this.previousScrollPosition=scrollPosition;
 	}
 
 	onAboutClicked(){
-		document.getElementById('intro')!.scrollIntoView();
+		document.getElementById('intro')!.scrollIntoView({behavior: 'smooth'});
+	}
+
+	onContactClicked(){
+		document.getElementById('footer')!.scrollIntoView();
 	}
 }

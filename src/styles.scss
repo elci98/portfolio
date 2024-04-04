@@ -13,7 +13,7 @@ body {
     --edgeposition: -135%;
     font-size: 15px;
     font-family: "Assistant";
-    overflow-x: hidden;
+    overflow-x: clip;
     height: 100%;
     width: 100%;
     margin: 0;
@@ -180,12 +180,6 @@ app-root {
             width: calc(100% - 5rem);
             justify-content: space-between;
 
-            .ham-menu {
-                font-size: 4rem;
-                font-weight: bolder;
-                display: none;
-                cursor: pointer;
-            }
 
             .header-name {
                 font-size: 3rem;
@@ -196,7 +190,7 @@ app-root {
                     color: rgba(0, 0, 0, 0.5);
                     text-decoration: auto;
                     &.white-background{
-                        color: $primaryColor;
+                        animation: fade-out 0.5s ease-out forwards;
                     }
                 }
             }
@@ -248,19 +242,20 @@ app-root {
 }
 
 .intro {
-
+    margin: 6.5rem 0 6.5rem 0;
     .container{
         display: flex;
-        padding: 5rem;
         align-items: flex-end;
         column-gap: 2rem;
-        flex-direction: row-reverse;        
+        flex-direction: row-reverse;     
+        justify-content: center;
         .left-side {
             font-size: 2rem;
             text-align: start;            
             .name {
                 font-size: 4rem;
                 font-weight: bold;
+                margin-top: 0;
             }
     
             .title {
@@ -268,11 +263,11 @@ app-root {
                 font-weight: 500;
             }
     
-            .intro .btn {
-                height: 3rem;
+            .intro-txt .btn {
+                height: 5rem;
                 display: flex;
-                width: 10rem;
-                font-size: 0.9rem;
+                width: 12rem;
+                font-size: 1.1rem;
                 justify-content: center;
                 align-items: center;
                 color: white;
@@ -294,6 +289,8 @@ app-root {
 .skills {
     text-align: -webkit-center;
     background-color: $backgroundColor;
+    min-width: 40rem;            
+    max-width: 160rem;
     .line-1{
         height: 1px;
         width: 10rem;
@@ -318,14 +315,34 @@ app-root {
         overflow: hidden;
         padding: 1rem;
         min-width: 30rem;            
-
+        button {
+            background-color: transparent;
+            &.active, &:hover {
+                span{
+                    background-color: #869791;
+                }
+            }
+            span{
+                width: 10px;
+                height: 10px;
+                margin: 5px 7px;
+                background-color: #D6D6D6;
+                display: block;
+                backface-visibility: visible;
+                transition: opacity 200ms ease;
+                border-radius: 30px;
+            }
+        }
         .skills-list {
             position: relative;
             display: flex;
             column-count: 1;
             padding: 0;
             column-gap: 1rem;
-            animation: slide 20s linear infinite alternate;
+            overflow-x: auto;
+            &::-webkit-scrollbar {
+                display: none;
+            }
             app-skill-item .skill-item-container {
                 height: 25rem;
                 border-radius: 1rem;
@@ -352,7 +369,7 @@ footer{
     margin-top: 6.5rem;
     .icons{
         display: flex;
-        column-gap: 0.5rem;
+        column-gap: 3rem;
         justify-content: center;
         margin-top: 0.5rem;
     }
@@ -362,30 +379,25 @@ footer{
 }
 
 @media (max-width: 700px) {
-    .buttons {
-        display: none;
-    }
-
-    #hamMenu {
-        display: block;
-        color: $textColor;
-    }
 
     #scrolldown {
         display: none;
     }
 
     #intro-container{
-        display: block;
         aside{
             height: 100%;
             width: 100%;
-            padding-top: 1rem;     
+            margin-top: 6.5rem ;
+            padding: 0;
             img{
                 height: inherit;
                 width: inherit;
             }
         }
+     }
+     footer{
+        font-size: 1.2rem;
      }
  
 }
@@ -393,6 +405,15 @@ footer{
 @media(max-width: 1500px){
    body{
     --edgeposition:-254%;
+   }
+   #intro-container{
+        display: block;
+        .left-side{
+            text-align: unset;
+        }
+        aside{
+            margin-top: 6.5rem;
+        }
    }
 }
 
@@ -409,11 +430,17 @@ footer{
 }
 @media only screen and (max-width: 450px) {
     html,body {
-        font-size: 62.5%;
+        font-size: 10px !important;
     }
     #intro-container aside{
         height: 100%;
         width: 100%;
+    }
+}
+
+@media only screen and (max-height: 750px) {
+    html,body {
+        font-size: 12px;
     }
 }
 
@@ -440,29 +467,10 @@ footer{
 }
 
 @keyframes fade-out{
+    from{
+        opacity: 1;
+    }
     to{
-        display: none;
-    }
-}
-
-@keyframes slide {
-    0% {
-        transform: translateX(0%);
-    }
-
-    45% {
-        transform: translateX(var(--edgeposition));
-    }
-
-    50% {
-        transform: translateX(var(--edgeposition));
-    }
-
-    95% {
-        transform: translateX(0%);
-    }
-
-    100% {
-        transform: translateX(0%);
+        opacity:0;
     }
 }

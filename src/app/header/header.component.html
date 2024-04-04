@@ -5,26 +5,7 @@
     </div>
     <div class="buttons">
       <Button class="about btn" (click)="onAboutClicked()" [ngClass]="{'white-background': whiteBackground}">About</Button>
-      <!-- <Button class="Resume btn" [ngClass]="{'white-background': whiteBackground}">Resume</Button> -->
-      <Button class="contact btn" [ngClass]="{'white-background': whiteBackground}">Contact</Button>
+      <Button class="contact btn" (click)="onContactClicked()" [ngClass]="{'white-background': whiteBackground}">Contact</Button>
     </div>
-    <div id="hamMenu" class="ham-menu" (click)="displayMenu=!displayMenu">&equiv;</div>
   </div>
-  <ul id="menubody" class="menu-body" *ngIf="displayMenu">
-    <li class="list-item">
-      <Button class="about btn">
-        <span> About </span>
-      </Button>
-    </li>
-    <!-- <li>
-      <Button class="resume btn">
-        <span> Resume </span>
-      </Button>
-    </li> -->
-    <li>
-      <Button class="contact btn">
-        <span> Contact </span>
-      </Button>
-    </li>
-  </ul>
 </header>
