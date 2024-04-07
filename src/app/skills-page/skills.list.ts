@@ -27,4 +27,8 @@ export const staticSkillsList = [
 		name: 'Typescript',
 		text: 'Using TypeScript to improve JavaScript codebases, offering strong typing and modern features for reliable and maintainable applications.',
 	},
+	{
+		name: 'Openshift',
+		text: 'Using TypeScript to improve JavaScript codebases, offering strong typing and modern features for reliable and maintainable applications.',
+	}
 ];

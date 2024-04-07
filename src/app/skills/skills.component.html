@@ -2,17 +2,23 @@
       <p class="line-1"></p>
       <h2>My Skills</h2>
       <p class="line-2"></p>
-      <div class="skills-list-wrapper" #skillsListWrraper>
+      <div class="skills-list-wrapper" #skillsListWrraper
+      (mouseenter)="handleInterval(true)" 
+      (mouseleave)="handleInterval(true)"
+      (mousedown)="handleInterval(true)"
+      (touchstart)="handleInterval(true)"
+      (touchcancel)="handleInterval(true)">
         <div class="skills-list" #skillsList >
-            <app-skill-item #skillsListItem *ngFor="let skill of staticSkillsList"
-              [name]="skill.name"
-              [text]="skill.text"
-              [width]="elementWidthFactor"
-              (mouseenter)="handleInterval(true)" 
-              (mouseleave)="handleInterval(true)">
-            </app-skill-item>
+
+          <app-skills-page #skillsPage *ngFor="let item of Array;index as i;"
+          ngClass="skill-page-{{i+1}}" 
+          [pageNumber]="i"
+          [numOfElements]="numOfItems"
+          [elementWidthFactor]="elementWidthFactor">
+
+          </app-skills-page>
         </div> 
-        <button (click)="scrollTo(i+1)" class="btn" [ngClass]="{'active': i+1 === selectedPage}" *ngFor="let item of Array;index as i;">
+        <button (click)="scrollToPage(i+1)" class="btn" [ngClass]="{'active': i+1 === selectedPage}" *ngFor="let item of Array;index as i;">
           <span></span>
         </button>
     </div>

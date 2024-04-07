@@ -44,8 +44,8 @@ export class HeaderComponent {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	onScroll(){
 		const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
-		if(scrollPosition >= 400 && this.previousScrollPosition < 400 ||
-			scrollPosition <= 400 && this.previousScrollPosition > 400){
+		if(scrollPosition >= 200 && this.previousScrollPosition < 200 ||
+			scrollPosition <= 200 && this.previousScrollPosition > 200){
 			this.whiteBackground = !this.whiteBackground;
 		}
 		this.previousScrollPosition=scrollPosition;
@@ -56,6 +56,6 @@ export class HeaderComponent {
 	}
 
 	onContactClicked(){
-		document.getElementById('footer')!.scrollIntoView();
+		document.getElementById('footer')!.scrollIntoView({behavior: 'smooth'});
 	}
 }
